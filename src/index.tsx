@@ -20,17 +20,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Switch from '@material-ui/core/Switch';
 
-// const styles = {
-//   root: {
-//     flexGrow: 1,
-//     backgroundColor: 'green',
-//   },
-// };
-
-const rootStyle = css`
-  flex-grow: 1;
-  background-color: green;
-`;
 
 class SwitchesGroup extends React.Component {
   state = {
@@ -84,6 +73,10 @@ class SwitchesGroup extends React.Component {
     );
   }
 }
+
+const rootStyle = css`
+  flex-grow: 1;
+`;
 
 function SimpleAppBar() {
   return (
