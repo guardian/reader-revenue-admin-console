@@ -1,12 +1,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Hello from './components/Hello';
+import Button from '@material-ui/core/Button';
 import './index.css';
 import 'typeface-roboto';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-  <Hello name="Typescript" enthusiasmLevel={10} />,
+  <Button variant="contained" color="primary">Hello World</Button>,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
