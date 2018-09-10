@@ -81,6 +81,10 @@ const rootStyle = css`
   flex-grow: 1;
 `;
 
+const paddingStyle = css`
+  padding: 24px;
+`
+
 function Amounts({amounts}: {amounts: Object}) {
   const oneOffAmounts = amounts['ONE_OFF'];
   return (<div>
@@ -111,6 +115,14 @@ const save = (originalAmounts: Object) => () => {
 
   console.log('saving:');
   console.log(data);
+
+  fetch('http://localhost:7000/post', {method: 'POST', body: JSON.stringify(data)})
+    .then(resp => {
+      console.log('response from posting data', resp);
+    })
+    .catch(err => {
+      console.error('Bad!', err);
+    });
 }
 
 function SimpleAppBar({amounts}: {amounts: Object}) {
@@ -123,8 +135,10 @@ function SimpleAppBar({amounts}: {amounts: Object}) {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Amounts amounts={amounts} />
-      <Button size="large" color="primary" onClick={save(amounts)}>Save</Button>
+      <div className={paddingStyle}>
+        <Amounts amounts={amounts} />
+        <Button size="large" color="primary" onClick={save(amounts)}>Save</Button>
+      </div>
     </div>
   );
 }
