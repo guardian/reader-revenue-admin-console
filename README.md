@@ -1,6 +1,6 @@
 ## Reader Revenue Admin Console
 
-To start dev server:
+To start dev server (listens on port 3000):
 ```
 yarn run start
 ```
