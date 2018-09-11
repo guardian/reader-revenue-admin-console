@@ -23,7 +23,6 @@ const paddingStyle = css`
 
 function Amounts({amounts}: {amounts: Object}) {
   const oneOffAmounts = amounts['ONE_OFF'];
-  console.log(oneOffAmounts);
   return (<div>
     {Object.keys(oneOffAmounts).map(countryGroup =>
        // fix warning: each child in an array or iterator should have a unique "key" prop
