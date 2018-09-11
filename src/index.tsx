@@ -23,14 +23,17 @@ const paddingStyle = css`
 
 function Amounts({amounts}: {amounts: Object}) {
   const oneOffAmounts = amounts['ONE_OFF'];
+  console.log(oneOffAmounts);
   return (<div>
     {Object.keys(oneOffAmounts).map(countryGroup =>
-      <div className="countryGroup">
-        <Typography variant="title" color="inherit">
+       // fix warning: each child in an array or iterator should have a unique "key" prop
+      <div className="countryGroup" key={countryGroup}>
+        <Typography variant="title" color="inherit" >
           {countryGroup}
         </Typography>
-        {oneOffAmounts[countryGroup].map((amount: {value: string}) => 
-          <TextField defaultValue={amount.value} />
+        {oneOffAmounts[countryGroup].map((amount: {value: string}, i: number) => 
+          // fix warning: each child in an array or iterator should have a unique "key" prop
+          <TextField defaultValue={amount.value} key={`${countryGroup}-${i}`}/>
         )}
       </div>
     )}
