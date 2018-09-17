@@ -38,10 +38,6 @@ const configs = [
                 }
             ],
         },
-        externals: {
-            react: 'React',
-            'react-dom': 'ReactDOM',
-        },
     },
     {
         entry: {
