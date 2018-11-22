@@ -1,8 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import './index.css';
-import 'typeface-roboto';
-import registerServiceWorker from './registerServiceWorker';
+// import 'typeface-roboto';
 import { css } from 'react-emotion';
 
 import Typography from '@material-ui/core/Typography';
@@ -13,13 +10,6 @@ import AppBar from '@material-ui/core/AppBar';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const rootStyle = css`
-  flex-grow: 1;
-`;
-
-const paddingStyle = css`
-  padding: 24px;
-`
 
 function Amounts({amounts}: {amounts: Object}) {
   const oneOffAmounts = amounts['ONE_OFF'];
@@ -63,9 +53,9 @@ const save = (originalAmounts: Object) => () => {
     });
 }
 
-function SimpleAppBar({amounts}: {amounts: Object}) {
+export function SimpleAppBar({amounts}: {amounts: Object}) {
   return (
-    <div className={rootStyle}>
+    <div className={css`flex-grow: 1;`}>
       <AppBar position="static" color="default">
         <Toolbar>
           <Typography variant="title" color="inherit">
@@ -73,20 +63,10 @@ function SimpleAppBar({amounts}: {amounts: Object}) {
           </Typography>
         </Toolbar>
       </AppBar>
-      <div className={paddingStyle}>
+      <div className={css`padding: 24px;`}>
         <Amounts amounts={amounts} />
         <Button size="large" color="primary" onClick={save(amounts)}>Save</Button>
       </div>
     </div>
   );
 }
-
-fetch('http://joseph-smith-support-frontend-config.s3-website-eu-west-1.amazonaws.com/amounts.json')
-  .then(resp => resp.json())
-  .then(amounts => {
-    ReactDOM.render(
-      <SimpleAppBar amounts={amounts}></SimpleAppBar>,
-      document.getElementById('root') as HTMLElement
-    );
-    registerServiceWorker();
-  });
