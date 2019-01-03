@@ -1,0 +1,17 @@
+stacks: [support]
+regions: [eu-west-1]
+deployments:
+  cfn:
+    type: cloud-formation
+    app: reader-revenue-admin-console
+    parameters:
+      templatePath: cfn.yaml
+      amiTags:
+        Recipe: xenial-membership
+        AmigoStage: PROD
+      amiEncrypted: true
+  reader-revenue-admin-console:
+    type: autoscaling
+    dependencies: [cfn]
+    parameters:
+      bucket: membership-dist
