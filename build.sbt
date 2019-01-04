@@ -6,6 +6,7 @@ version := "1.0-SNAPSHOT"
 scalaVersion := "2.12.8"
 
 libraryDependencies ++= Seq(
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.7.2"
 )
 
 sources in(Compile, doc) := Seq.empty
